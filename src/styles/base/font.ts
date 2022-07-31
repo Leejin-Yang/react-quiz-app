@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import color from 'styles/constants/color';
 
 const font = css`
   body,
@@ -7,6 +8,8 @@ const font = css`
   textarea {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji',
       'Segoe UI Emoji', 'Segoe UI Symbol';
+    color: ${color.TEXT_PRIMARY};
+    font-size: 16px;
   }
 
   input[type='number'] {

@@ -31,11 +31,16 @@ export const AnswerItem = styled.li`
   height: 60px;
   line-height: 60px;
   margin-bottom: 10px;
-  border: 1px solid gray;
+  border: 1px solid ${color.PRIMARY};
   border-radius: 8px;
 
-  &.correct {
+  &:hover {
     background-color: ${color.PRIMARY};
+    border: none;
+
+    button {
+      color: ${color.TEXT_WHITE};
+    }
   }
 
   button {

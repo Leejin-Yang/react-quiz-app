@@ -5,6 +5,12 @@ export const CustomButton = styled.button`
   width: 180px;
   height: 50px;
   font-size: 16px;
-  border: 2px solid ${color.PRIMARY};
+  border: 1px solid ${color.PRIMARY};
   border-radius: 8px;
+
+  &:hover {
+    background-color: ${color.PRIMARY};
+    border: none;
+    color: ${color.TEXT_WHITE};
+  }
 `;
