@@ -4,13 +4,12 @@ export const Container = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   height: 100%;
   padding: 0 20px;
 `;
 
 export const Section = styled.section`
-  width: 180px;
+  margin-bottom: 20px;
   line-height: 1.6;
 
   h1 {
