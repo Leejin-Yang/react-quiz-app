@@ -7,7 +7,8 @@ import dayjs from 'dayjs';
 import Button from 'components/Button';
 import { quizScoreState, startTimeState } from 'states/quiz';
 
-import { Container, Section, Wrapper } from './style';
+import { Container, ScoreText, Section, Wrapper } from './style';
+import Chart from './Chart';
 
 const QuizResult = () => {
   const [quizTime, setQuizTime] = useState(0);
@@ -33,17 +34,19 @@ const QuizResult = () => {
         <h1>Result</h1>
         <Wrapper>
           <p>
-            Correct: <strong>{correct}</strong>
-          </p>
-          <p>
-            Incorrect: <strong>{incorrect}</strong>
-          </p>
-          <p>
             Time: <strong>{quizTime} 초</strong>
           </p>
         </Wrapper>
+        <Wrapper>
+          <ScoreText>
+            {correct} / {correct + incorrect}
+          </ScoreText>
+          <Chart correct={correct} incorrect={incorrect} />
+        </Wrapper>
       </Section>
-      <Button onClick={onClick}>다시 풀기</Button>
+      <div>
+        <Button onClick={onClick}>다시 풀기</Button>
+      </div>
     </Container>
   );
 };

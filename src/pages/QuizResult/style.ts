@@ -19,6 +19,7 @@ export const Section = styled.section`
 `;
 
 export const Wrapper = styled.div`
+  position: relative;
   margin-top: 20px;
   line-height: 1.6;
   font-size: 18px;
@@ -26,4 +27,17 @@ export const Wrapper = styled.div`
   strong {
     font-weight: 500;
   }
+`;
+
+export const ScoreText = styled.p`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 60px;
+  line-height: 60px;
+  font-size: 40px;
+  font-weight: 600;
+  font-style: italic;
+  text-align: center;
+  transform: translate(-50%, -50%);
 `;
