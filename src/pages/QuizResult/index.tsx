@@ -7,7 +7,7 @@ import dayjs from 'dayjs';
 import Button from 'components/Button';
 import { quizScoreState, startTimeState } from 'states/quiz';
 
-import { Container, ScoreText, Section, Wrapper } from './style';
+import { ButtonWrapper, Container, CustomP, ScoreText, Section, Wrapper } from './style';
 import Chart from './Chart';
 
 const QuizResult = () => {
@@ -24,19 +24,13 @@ const QuizResult = () => {
     setQuizTime(timeDiff);
   });
 
-  const onClick = () => {
-    navigate('/quizzes', { replace: true });
-  };
-
   return (
     <Container>
       <Section>
         <h1>Result</h1>
-        <Wrapper>
-          <p>
-            Time: <strong>{quizTime} 초</strong>
-          </p>
-        </Wrapper>
+        <CustomP>
+          Time: <strong>{quizTime} 초</strong>
+        </CustomP>
         <Wrapper>
           <ScoreText>
             {correct} / {correct + incorrect}
@@ -44,9 +38,10 @@ const QuizResult = () => {
           <Chart correct={correct} incorrect={incorrect} />
         </Wrapper>
       </Section>
-      <div>
-        <Button onClick={onClick}>다시 풀기</Button>
-      </div>
+      <ButtonWrapper>
+        <Button onClick={() => navigate('/quizzes', { replace: true })}>다시 풀기</Button>
+        <Button onClick={() => navigate('/study-note', { replace: true })}>오답 노트</Button>
+      </ButtonWrapper>
     </Container>
   );
 };

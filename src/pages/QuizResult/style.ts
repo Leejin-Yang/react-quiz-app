@@ -20,6 +20,9 @@ export const Section = styled.section`
 
 export const Wrapper = styled.div`
   position: relative;
+`;
+
+export const CustomP = styled.p`
   margin-top: 20px;
   line-height: 1.6;
   font-size: 18px;
@@ -40,4 +43,12 @@ export const ScoreText = styled.p`
   font-style: italic;
   text-align: center;
   transform: translate(-50%, -50%);
+`;
+
+export const ButtonWrapper = styled.div`
+  align-self: center;
+
+  button + button {
+    margin-left: 20px;
+  }
 `;

@@ -16,6 +16,13 @@ export interface ICamelQuiz {
   incorrectAnswers: string[];
 }
 
+export interface INote {
+  category: string;
+  question: string;
+  correctAnswer: string;
+  playerAnswer: string;
+}
+
 export interface IQuizApiRes {
   response_code: number;
   results: IQuiz[];

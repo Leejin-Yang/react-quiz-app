@@ -1,7 +1,7 @@
 import { MouseEventHandler, useEffect, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 
-import { quizScoreState } from 'states/quiz';
+import { quizScoreState, studyNoteListState } from 'states/quiz';
 import { ICamelQuiz } from 'types/quiz';
 
 import AnswerModal from 'components/Modal/AnswerModal';
@@ -25,21 +25,23 @@ const Quiz = ({ quiz, handleStage }: Props) => {
   const [answerMessage, setAnswerMessage] = useState('');
   const [showModal, setShowModal] = useState(false);
 
+  const setStudyNoteList = useSetRecoilState(studyNoteListState);
   const setQuizScore = useSetRecoilState(quizScoreState);
 
   const onClick: MouseEventHandler<HTMLButtonElement> = (e) => {
     const { answer } = e.currentTarget.dataset;
 
+    if (!answer) return;
+
     if (answer === correctAnswer) {
       setAnswerMessage(ANSWER_MESSAGE.CORRECT);
-      setQuizScore((prev) => {
-        return { ...prev, correct: prev.correct + 1 };
-      });
+      setQuizScore((prev) => ({ ...prev, correct: prev.correct + 1 }));
     } else {
+      const note = { category, question, correctAnswer, playerAnswer: answer };
+
       setAnswerMessage(ANSWER_MESSAGE.INCORRECT);
-      setQuizScore((prev) => {
-        return { ...prev, incorrect: prev.incorrect + 1 };
-      });
+      setQuizScore((prev) => ({ ...prev, incorrect: prev.incorrect + 1 }));
+      setStudyNoteList((prev) => [...prev, note]);
     }
 
     setShowModal(true);

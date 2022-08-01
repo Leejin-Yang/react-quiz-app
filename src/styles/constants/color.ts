@@ -6,6 +6,8 @@ const color = {
   TEXT_WHITE: '#ececec',
 
   GRAY3: '#dee2e6',
+  GRAY4: '#ced4da',
+  GRAY5: '#abd5bd',
 };
 
 export default color;

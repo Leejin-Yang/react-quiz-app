@@ -30,7 +30,6 @@ export const AnswerItem = styled.li`
   width: 100%;
   height: 60px;
   line-height: 60px;
-  margin-bottom: 10px;
   border: 1px solid ${color.PRIMARY};
   border-radius: 8px;
 
