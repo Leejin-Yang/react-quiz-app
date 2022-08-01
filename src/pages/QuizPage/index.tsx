@@ -1,17 +1,25 @@
 import { useEffect, useState } from 'react';
+import { useResetRecoilState, useSetRecoilState } from 'recoil';
+import { useMount } from 'react-use';
 import camelcaseKeys from 'camelcase-keys';
 
 import { getQuizListApi } from 'services/quiz';
+import { quizScoreState, startTimeState } from 'states/quiz';
 import { ICamelQuiz } from 'types/quiz';
 
 import Quiz from './Quiz';
 
 import { Container, ProgressBar, Section } from './style';
+import { useNavigate } from 'react-router-dom';
 
 const QuizPage = () => {
-  const [isLoading, setIsLoading] = useState(true);
   const [quizzes, setQuizzes] = useState<ICamelQuiz[]>([]);
   const [stage, setStage] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const navigate = useNavigate();
+  const setStartTime = useSetRecoilState(startTimeState);
+  const resetScore = useResetRecoilState(quizScoreState);
 
   const getQuizList = () => {
     getQuizListApi()
@@ -20,16 +28,33 @@ const QuizPage = () => {
       .finally(() => setIsLoading(false));
   };
 
+  useMount(() => {
+    const time = new Date().getTime();
+
+    setStartTime(time);
+  });
+
   useEffect(() => {
     getQuizList();
-  }, []);
+    resetScore();
+  }, [resetScore]);
 
   const handleStage = () => {
     setStage((prev) => prev + 1);
+
+    if (stage + 1 === quizzes.length) {
+      navigate('/quizzes/result', { replace: true });
+    }
   };
 
-  if (isLoading) return <Container>Loading...</Container>;
-  if (stage === quizzes.length) return <Container>Finish</Container>;
+  if (isLoading)
+    return (
+      <Container>
+        <Section>
+          <h1>Loading...</h1>
+        </Section>
+      </Container>
+    );
 
   return (
     <Container>

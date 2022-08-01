@@ -15,7 +15,6 @@ export const Container = styled.main`
 
 export const Section = styled.section`
   margin-bottom: 20px;
-  line-height: 1.6;
 
   h1 {
     font-size: 32px;
