@@ -16,6 +16,7 @@ const QuizPage = () => {
   const [quizList, setQuizList] = useState<ICamelQuiz[]>([]);
   const [stage, setStage] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const navigate = useNavigate();
   const setStartTime = useSetRecoilState(startTimeState);
@@ -26,6 +27,7 @@ const QuizPage = () => {
     getQuizListApi()
       .then((res) => res.data)
       .then((data) => setQuizList(camelcaseKeys(data.results)))
+      .catch(() => setIsError(true))
       .finally(() => setIsLoading(false));
   };
 
@@ -53,6 +55,15 @@ const QuizPage = () => {
       <Container>
         <Section>
           <h1>Loading...</h1>
+        </Section>
+      </Container>
+    );
+
+  if (isError)
+    return (
+      <Container>
+        <Section>
+          <h1>Network Error</h1>
         </Section>
       </Container>
     );
