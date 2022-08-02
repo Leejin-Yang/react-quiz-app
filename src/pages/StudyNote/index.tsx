@@ -26,6 +26,7 @@ const StudyNote = () => {
         </ListContainer>
       </Section>
       <ButtonWrapper>
+        <Button onClick={() => navigate('/')}>돌아가기</Button>
         <Button onClick={() => navigate('/quizzes', { replace: true })}>다시 풀기</Button>
       </ButtonWrapper>
     </Container>

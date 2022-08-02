@@ -13,12 +13,17 @@ export const Container = styled.div`
   width: 300px;
   height: 100%;
   max-height: 300px;
-  padding: 20px;
   background: ${color.BACKGROUND};
   border-radius: 10px;
   transform: translate(-50%, -50%);
+
+  p {
+    height: 120px;
+    line-height: 120px;
+    font-size: 16px;
+  }
 `;
 
 export const ButtonContainer = styled.div`
-  margin-top: 20px;
+  margin-top: 40px;
 `;

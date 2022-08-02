@@ -49,6 +49,6 @@ export const ButtonWrapper = styled.div`
   align-self: center;
 
   button + button {
-    margin-left: 20px;
+    margin-left: 10px;
   }
 `;

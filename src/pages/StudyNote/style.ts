@@ -11,7 +11,7 @@ export const Container = styled.main`
 `;
 
 export const Section = styled.section`
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 
   h1 {
     font-size: 32px;
@@ -27,7 +27,7 @@ export const Section = styled.section`
 
 export const ListContainer = styled.div`
   height: 600px;
-  margin-top: 40px;
+  margin-top: 30px;
   border: 1px solid ${color.PRIMARY};
   padding: 20px;
   overflow-y: scroll;
@@ -119,4 +119,8 @@ export const AnswerItem = styled.li`
 
 export const ButtonWrapper = styled.div`
   align-self: flex-end;
+
+  button + button {
+    margin-left: 10px;
+  }
 `;
