@@ -20,3 +20,9 @@ export const Section = styled.section`
     font-style: italic;
   }
 `;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+`;

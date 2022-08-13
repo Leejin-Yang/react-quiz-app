@@ -1,9 +1,10 @@
 import { MouseEventHandler, useEffect, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
+import store from 'store';
 
 import AnswerModal from 'components/Modal/AnswerModal';
-import { quizScoreState, studyNoteListState } from 'states/quiz';
-import { ICamelQuiz } from 'types/quiz';
+import { quizScoreState } from 'states/quiz';
+import { ICamelQuiz, INote } from 'types/quiz';
 
 import { AnswerItem, AnswerList, Container, CustomP, Question } from './style';
 
@@ -24,8 +25,20 @@ const Quiz = ({ quiz, handleStage }: Props) => {
   const [answerMessage, setAnswerMessage] = useState('');
   const [showModal, setShowModal] = useState(false);
 
-  const setStudyNoteList = useSetRecoilState(studyNoteListState);
   const setQuizScore = useSetRecoilState(quizScoreState);
+
+  const setLocalStudyNote = (note: INote) => {
+    const localStudyNoteList = store.get('quiz-study-note');
+
+    if (!localStudyNoteList) {
+      store.set('quiz-study-note', [note]);
+      return;
+    }
+
+    const isNoted = localStudyNoteList.find((item: INote) => item.question === note.question);
+    const newStudyNoteList = isNoted ? localStudyNoteList : [...localStudyNoteList, note];
+    store.set('quiz-study-note', newStudyNoteList);
+  };
 
   const onClick: MouseEventHandler<HTMLButtonElement> = (e) => {
     const { answer } = e.currentTarget.dataset;
@@ -40,7 +53,7 @@ const Quiz = ({ quiz, handleStage }: Props) => {
 
       setAnswerMessage(ANSWER_MESSAGE.INCORRECT);
       setQuizScore((prev) => ({ ...prev, incorrect: prev.incorrect + 1 }));
-      setStudyNoteList((prev) => [...prev, note]);
+      setLocalStudyNote(note);
     }
 
     setShowModal(true);

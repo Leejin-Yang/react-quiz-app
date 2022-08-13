@@ -1,17 +1,30 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useRecoilValue, useResetRecoilState } from 'recoil';
+import { useMount } from 'react-use';
+import { useResetRecoilState } from 'recoil';
+import store from 'store';
 
 import Button from 'components/Button';
-import { studyNoteListState, studyNoteToggleState } from 'states/quiz';
+import { studyNoteToggleState } from 'states/quiz';
+import { INote } from 'types/quiz';
 
 import Note from './Note';
 
 import { ButtonWrapper, Container, CustomDiv, ListContainer, NoteList, Section } from './style';
 
 const StudyNote = () => {
-  const studyNoteList = useRecoilValue(studyNoteListState);
-  const resetNoteToggle = useResetRecoilState(studyNoteToggleState);
+  const [studyNoteList, setStudyNoteList] = useState<INote[]>();
+
   const navigate = useNavigate();
+  const resetNoteToggle = useResetRecoilState(studyNoteToggleState);
+
+  useMount(() => {
+    const localStudyNoteList = store.get('quiz-study-note');
+
+    if (!localStudyNoteList) return;
+
+    setStudyNoteList(localStudyNoteList);
+  });
 
   return (
     <Container>
@@ -22,16 +35,23 @@ const StudyNote = () => {
           <Button onClick={resetNoteToggle}>Fold All</Button>
         </CustomDiv>
         <ListContainer>
-          <NoteList>
-            {studyNoteList.map((note, index) => (
-              <Note key={note.question} note={note} index={index} />
-            ))}
-          </NoteList>
+          {!studyNoteList && (
+            <p>
+              No Questions in the Note. <br /> Play Quiz and fill in the Note.
+            </p>
+          )}
+          {studyNoteList && (
+            <NoteList>
+              {studyNoteList.map((note, index) => (
+                <Note key={note.question} note={note} index={index} />
+              ))}
+            </NoteList>
+          )}
         </ListContainer>
       </Section>
       <ButtonWrapper>
         <Button onClick={() => navigate('/')}>돌아가기</Button>
-        <Button onClick={() => navigate('/quizzes', { replace: true })}>다시 풀기</Button>
+        <Button onClick={() => navigate('/quizzes', { replace: true })}>퀴즈 풀기</Button>
       </ButtonWrapper>
     </Container>
   );

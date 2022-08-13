@@ -1,7 +1,5 @@
 import { atom } from 'recoil';
 
-import { INote } from 'types/quiz';
-
 interface IQuizScore {
   correct: number;
   incorrect: number;
@@ -19,11 +17,6 @@ export const quizScoreState = atom<IQuizScore>({
 export const startTimeState = atom<number>({
   key: '#startTimeState',
   default: new Date().getTime(),
-});
-
-export const studyNoteListState = atom<INote[]>({
-  key: '#studyNoteListState',
-  default: [],
 });
 
 export const studyNoteToggleState = atom<IStudyNoteToggle>({
