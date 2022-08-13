@@ -1,5 +1,6 @@
-import color from 'styles/constants/color';
 import { VictoryPie } from 'victory';
+
+import color from 'styles/constants/color';
 
 interface Props {
   correct: number;

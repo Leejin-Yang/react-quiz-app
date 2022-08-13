@@ -1,10 +1,9 @@
 import { MouseEventHandler, useEffect, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 
+import AnswerModal from 'components/Modal/AnswerModal';
 import { quizScoreState, studyNoteListState } from 'states/quiz';
 import { ICamelQuiz } from 'types/quiz';
-
-import AnswerModal from 'components/Modal/AnswerModal';
 
 import { AnswerItem, AnswerList, Container, CustomP, Question } from './style';
 

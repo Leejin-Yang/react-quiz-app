@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 import color from 'styles/constants/color';
 
 export const Container = styled.main`
