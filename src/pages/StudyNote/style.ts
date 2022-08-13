@@ -11,6 +11,7 @@ export const Container = styled.main`
 `;
 
 export const Section = styled.section`
+  position: relative;
   margin-bottom: 30px;
 
   h1 {
@@ -62,4 +63,10 @@ export const ButtonWrapper = styled.div`
   button + button {
     margin-left: 10px;
   }
+`;
+
+export const CustomDiv = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 0;
 `;
