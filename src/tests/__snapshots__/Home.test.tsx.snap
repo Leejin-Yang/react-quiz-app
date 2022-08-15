@@ -17,12 +17,20 @@ exports[`<Home /> matches snapshot 1`] = `
          퀴즈는 영어로 제공됩니다 🙂
       </p>
     </section>
-    <div>
+    <div
+      class="sc-hKMtZM dVoNpp"
+    >
       <button
         class="sc-bczRLJ gDwxMx"
         type="button"
       >
         퀴즈 풀기
+      </button>
+      <button
+        class="sc-bczRLJ gDwxMx"
+        type="button"
+      >
+        오답 노트
       </button>
     </div>
   </main>

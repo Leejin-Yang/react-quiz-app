@@ -1,4 +1,4 @@
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import Home from 'pages/Home';
 
@@ -11,21 +11,31 @@ jest.mock('react-router-dom', () => ({
 
 describe('<Home />', () => {
   it('matches snapshot', () => {
-    const utils = render(<Home />);
+    const { container } = render(<Home />);
 
-    expect(utils.container).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
-  it('has title and button', () => {
-    const utils = render(<Home />);
+  it('has title, description and button', () => {
+    render(<Home />);
 
-    utils.getByText('Quiz');
-    utils.getByText('퀴즈 풀기');
+    screen.getByText('Quiz');
+    screen.getByText(/간단한 퀴즈를 풀어보세요❗️/i);
+    screen.getByText(/퀴즈는 영어로 제공됩니다 🙂/i);
+    screen.getByText('퀴즈 풀기');
+    screen.getByText('오답 노트');
   });
   it('navigate to quiz page', () => {
-    const utils = render(<Home />);
-    const quizButton = utils.getByText('퀴즈 풀기');
+    render(<Home />);
+    const quizButton = screen.getByText('퀴즈 풀기');
 
     fireEvent.click(quizButton);
     expect(mockedUseNavigate).toHaveBeenCalledWith('/quizzes');
+  });
+  it('navigate to study note page', () => {
+    render(<Home />);
+    const studyNoteButton = screen.getByText('오답 노트');
+
+    fireEvent.click(studyNoteButton);
+    expect(mockedUseNavigate).toHaveBeenCalledWith('/study-note', { replace: true });
   });
 });
