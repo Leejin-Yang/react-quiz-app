@@ -3,20 +3,22 @@ import color from 'styles/constants/color';
 
 export const NoteItem = styled.li`
   position: relative;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   height: 100%;
   min-height: 90px;
   line-height: 1.6;
   border: 1px solid ${color.PRIMARY};
   border-radius: 8px;
+`;
 
-  button {
-    width: 100%;
-    height: 100%;
-    padding: 10px 16px 30px;
-    text-align: left;
-    font-size: 16px;
-  }
+export const QuestionButton = styled.button`
+  width: 100%;
+  height: 100%;
+  padding: 10px 16px 30px;
+  text-align: left;
+  font-size: 16px;
 
   p {
     line-height: 1.6;
@@ -35,6 +37,11 @@ export const NoteItem = styled.li`
     font-size: 18px;
     font-weight: 500;
   }
+`;
+
+export const DeleteButton = styled.button`
+  padding: 0 16px;
+  font-size: 10px;
 `;
 
 export const AnswerItem = styled.li`

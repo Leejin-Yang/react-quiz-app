@@ -13,7 +13,7 @@ import Note from './Note';
 import { ButtonWrapper, Container, CustomDiv, ListContainer, NoteList, Section } from './style';
 
 const StudyNote = () => {
-  const [studyNoteList, setStudyNoteList] = useState<INote[]>();
+  const [studyNoteList, setStudyNoteList] = useState<INote[]>([]);
 
   const navigate = useNavigate();
   const resetNoteToggle = useResetRecoilState(studyNoteToggleState);
@@ -26,6 +26,13 @@ const StudyNote = () => {
     setStudyNoteList(localStudyNoteList);
   });
 
+  const deleteNote = (question: string) => {
+    const newStudyNoteList = studyNoteList.filter((item) => item.question !== question);
+
+    setStudyNoteList(newStudyNoteList);
+    store.set('quiz-study-note', newStudyNoteList);
+  };
+
   return (
     <Container>
       <Section>
@@ -35,15 +42,15 @@ const StudyNote = () => {
           <Button onClick={resetNoteToggle}>Fold All</Button>
         </CustomDiv>
         <ListContainer>
-          {!studyNoteList && (
+          {studyNoteList.length === 0 && (
             <p>
               No Questions in the Note. <br /> Play Quiz and fill in the Note.
             </p>
           )}
-          {studyNoteList && (
+          {studyNoteList.length > 0 && (
             <NoteList>
               {studyNoteList.map((note, index) => (
-                <Note key={note.question} note={note} index={index} />
+                <Note key={note.question} note={note} index={index} deleteNote={deleteNote} />
               ))}
             </NoteList>
           )}

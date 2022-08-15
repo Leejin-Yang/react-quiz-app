@@ -7,10 +7,6 @@ import { ButtonWrapper, Container, Section } from './style';
 const Home = () => {
   const navigate = useNavigate();
 
-  const onClick = () => {
-    navigate('/quizzes');
-  };
-
   return (
     <Container>
       <Section>
@@ -20,7 +16,7 @@ const Home = () => {
         </p>
       </Section>
       <ButtonWrapper>
-        <Button onClick={onClick}>퀴즈 풀기</Button>
+        <Button onClick={() => navigate('/quizzes')}>퀴즈 풀기</Button>
         <Button onClick={() => navigate('/study-note', { replace: true })}>오답 노트</Button>
       </ButtonWrapper>
     </Container>
