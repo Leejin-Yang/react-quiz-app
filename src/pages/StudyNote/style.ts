@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import color from 'styles/constants/color';
+import { color, responsive } from 'styles/constants';
 
 export const Container = styled.main`
   display: flex;
@@ -27,10 +27,9 @@ export const Section = styled.section`
 
 export const ListContainer = styled.div`
   position: relative;
-  height: 600px;
-  margin-top: 30px;
-  border: 1px solid ${color.PRIMARY};
-  padding: 20px;
+  height: 400px;
+  margin-top: 20px;
+  padding: 10px 0;
   overflow-y: scroll;
 
   & > p {
@@ -61,6 +60,13 @@ export const ListContainer = styled.div`
   &::-webkit-scrollbar-corner {
     background-color: colors.$BACKGROUND;
   }
+
+  @media ${responsive('MD')} {
+    height: 600px;
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid ${color.PRIMARY};
+  }
 `;
 
 export const NoteList = styled.ul`
@@ -79,6 +85,11 @@ export const ButtonWrapper = styled.div`
 
 export const CustomDiv = styled.div`
   position: absolute;
-  top: 10px;
+  top: 5%;
   right: 0;
+
+  @media ${responsive('MD')} {
+    top: 10px;
+    right: 0;
+  }
 `;

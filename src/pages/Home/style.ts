@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { responsive } from 'styles/constants';
 
 export const Container = styled.main`
   display: flex;
@@ -23,6 +24,10 @@ export const Section = styled.section`
 
 export const ButtonWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  row-gap: 10px;
+  column-gap: 10px;
+
+  @media ${responsive('MD')} {
+    flex-direction: column;
+    row-gap: 10px;
+  }
 `;

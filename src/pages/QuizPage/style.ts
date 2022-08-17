@@ -1,9 +1,5 @@
 import styled from 'styled-components';
-import color from 'styles/constants/color';
-
-interface ProgressBarProp {
-  value: number;
-}
+import { color } from 'styles/constants';
 
 export const Container = styled.main`
   display: flex;
@@ -23,7 +19,11 @@ export const Section = styled.section`
   }
 `;
 
-export const ProgressBar = styled.div<ProgressBarProp>`
+export const TitleWrapper = styled.div`
+  margin-bottom: 20px;
+`;
+
+export const ProgressBar = styled.div<{ value: number }>`
   width: 100%;
   height: 4px;
   margin-bottom: 30px;

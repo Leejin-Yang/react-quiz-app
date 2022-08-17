@@ -6,7 +6,7 @@ import AnswerModal from 'components/Modal/AnswerModal';
 import { quizScoreState } from 'states/quiz';
 import { ICamelQuiz, INote } from 'types/quiz';
 
-import { AnswerItem, AnswerList, Container, CustomP, Question } from './style';
+import { AnswerItem, AnswerList, CustomP, Question } from './style';
 
 const ANSWER_MESSAGE = {
   CORRECT: '정답입니다 😊',
@@ -69,7 +69,7 @@ const Quiz = ({ quiz, handleStage }: Props) => {
 
   return (
     <>
-      <Container>
+      <div>
         <div>
           <CustomP>
             Category: <strong>{category}</strong>
@@ -88,7 +88,7 @@ const Quiz = ({ quiz, handleStage }: Props) => {
             </AnswerItem>
           ))}
         </AnswerList>
-      </Container>
+      </div>
       {showModal && <AnswerModal onClose={onClose} handleStage={handleStage} message={answerMessage} />}
     </>
   );

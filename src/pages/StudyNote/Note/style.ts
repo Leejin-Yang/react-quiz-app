@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import color from 'styles/constants/color';
+import { color } from 'styles/constants';
 
 export const NoteItem = styled.li`
   position: relative;
@@ -29,7 +29,6 @@ export const QuestionButton = styled.button`
   }
 
   p:first-of-type {
-    height: 30px;
     margin-bottom: 6px;
   }
 
@@ -49,14 +48,13 @@ export const AnswerItem = styled.li`
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  height: 90px;
+  min-height: 90px;
   padding: 0 16px;
   border-radius: 8px;
   background-color: ${color.PRIMARY};
 
   p {
-    height: 30px;
-    line-height: 30px;
+    line-height: 1.6;
     font-size: 16px;
     font-weight: 300;
     color: ${color.TEXT_WHITE};
