@@ -7,8 +7,9 @@ import dayjs from 'dayjs';
 import Button from 'components/Button';
 import { quizScoreState, startTimeState } from 'states/quiz';
 
-import { ButtonWrapper, Container, CustomP, ScoreText, Section, Wrapper } from './style';
 import Chart from './Chart';
+
+import { ButtonWrapper, Container, CustomP, ScoreText, Section, Wrapper } from './style';
 
 const QuizResult = () => {
   const [quizTime, setQuizTime] = useState(0);

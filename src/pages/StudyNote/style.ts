@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-
-import color from 'styles/constants/color';
+import { color, responsive } from 'styles/constants';
 
 export const Container = styled.main`
   display: flex;
@@ -11,6 +10,7 @@ export const Container = styled.main`
 `;
 
 export const Section = styled.section`
+  position: relative;
   margin-bottom: 30px;
 
   h1 {
@@ -26,11 +26,23 @@ export const Section = styled.section`
 `;
 
 export const ListContainer = styled.div`
-  height: 600px;
-  margin-top: 30px;
-  border: 1px solid ${color.PRIMARY};
-  padding: 20px;
+  position: relative;
+  height: 400px;
+  margin-top: 20px;
+  padding: 10px 0;
   overflow-y: scroll;
+
+  & > p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 2;
+    transform: translate(-50%, -50%);
+  }
 
   &::-webkit-scrollbar {
     display: block;
@@ -48,6 +60,13 @@ export const ListContainer = styled.div`
   &::-webkit-scrollbar-corner {
     background-color: colors.$BACKGROUND;
   }
+
+  @media ${responsive('MD')} {
+    height: 600px;
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid ${color.PRIMARY};
+  }
 `;
 
 export const NoteList = styled.ul`
@@ -61,5 +80,16 @@ export const ButtonWrapper = styled.div`
 
   button + button {
     margin-left: 10px;
+  }
+`;
+
+export const CustomDiv = styled.div`
+  position: absolute;
+  top: 5%;
+  right: 0;
+
+  @media ${responsive('MD')} {
+    top: 10px;
+    right: 0;
   }
 `;

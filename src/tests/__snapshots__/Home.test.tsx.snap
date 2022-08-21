@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Home /> matches snapshot 1`] = `
+<div>
+  <main
+    class="sc-gsnTZi etKRxi"
+  >
+    <section
+      class="sc-dkzDqf gRJqEN"
+    >
+      <h2>
+        Quiz
+      </h2>
+      <p>
+        간단한 퀴즈를 풀어보세요❗️ 
+        <br />
+         퀴즈는 영어로 제공됩니다 🙂
+      </p>
+    </section>
+    <div
+      class="sc-hKMtZM dVoNpp"
+    >
+      <button
+        class="sc-bczRLJ gDwxMx"
+        type="button"
+      >
+        퀴즈 풀기
+      </button>
+      <button
+        class="sc-bczRLJ gDwxMx"
+        type="button"
+      >
+        오답 노트
+      </button>
+    </div>
+  </main>
+</div>
+`;

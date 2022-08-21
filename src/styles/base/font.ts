@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import color from 'styles/constants/color';
+import { color } from 'styles/constants';
 
 const font = css`
   body,

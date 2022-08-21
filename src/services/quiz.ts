@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import { IQuizApiRes } from 'types/quiz';
 
 const BASE_URL = 'https://opentdb.com/api.php';

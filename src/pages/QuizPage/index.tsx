@@ -10,12 +10,12 @@ import { ICamelQuiz } from 'types/quiz';
 
 import Quiz from './Quiz';
 
-import { Container, ProgressBar, Section } from './style';
+import { Container, ProgressBar, Section, TitleWrapper } from './style';
 
 const QuizPage = () => {
   const [quizList, setQuizList] = useState<ICamelQuiz[]>([]);
   const [stage, setStage] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
   const navigate = useNavigate();
@@ -23,7 +23,6 @@ const QuizPage = () => {
   const resetScore = useResetRecoilState(quizScoreState);
 
   const getQuizList = () => {
-    setIsLoading(true);
     getQuizListApi()
       .then((res) => res.data)
       .then((data) => setQuizList(camelcaseKeys(data.results)))
@@ -71,15 +70,15 @@ const QuizPage = () => {
   return (
     <Container>
       {quizList.length > 0 && (
-        <>
-          <Section>
+        <Section>
+          <TitleWrapper>
             <ProgressBar aria-label='quiz-progress' value={(stage / quizList.length) * 100} />
             <h1>
               Quiz {stage + 1} of {quizList.length}
             </h1>
-          </Section>
+          </TitleWrapper>
           <Quiz quiz={quizList[stage]} handleStage={handleStage} />
-        </>
+        </Section>
       )}
     </Container>
   );

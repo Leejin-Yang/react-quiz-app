@@ -1,8 +1,5 @@
 import styled from 'styled-components';
-
-import color from 'styles/constants/color';
-
-export const Container = styled.section``;
+import { color, responsive } from 'styles/constants';
 
 export const CustomP = styled.p`
   line-height: 1.6;
@@ -14,15 +11,26 @@ export const CustomP = styled.p`
 `;
 
 export const Question = styled.p`
-  margin: 20px 0 40px;
-  font-size: 20px;
+  margin: 20px 0 30px;
+  font-size: 18px;
   font-weight: 500;
   line-height: 1.6;
+
+  @media ${responsive('MD')} {
+    margin: 20px 0 40px;
+    font-size: 20px;
+  }
 `;
 
 export const AnswerList = styled.ul`
   li + li {
-    margin-top: 20px;
+    margin-top: 10px;
+  }
+
+  @media ${responsive('MD')} {
+    li + li {
+      margin-top: 20px;
+    }
   }
 `;
 
